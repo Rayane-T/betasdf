@@ -69,6 +69,7 @@ mapping_scale = ... # 1. / 10. / 100.
 
 ...
 
+# To better understand this, read the paper associated : Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains
 if mapping: 
     features = torch.from_numpy(points[:, :3] / 2 + np.array([[0.5, 0.5, 0.5]])).double()  # [0,1]
     features = torch.cat([features, torch.from_numpy(points[:, 3:])], dim=1)  # concatenate along dimension 1
@@ -89,7 +90,7 @@ if mapping:
 
 <u>Notes</u>:
 For the Mapping experiments, you can adjust both the mapping size and mapping scale. 
-
+I didn't manage to obtain good results from siren, leaving further experiments for the next-comers.
 
 ## Analyse 
 
@@ -110,7 +111,7 @@ visualize_marchingcubes_mesh(loadmodel, "PATH/TO/RESULT", True, 128)
 An .obj file will be generated, you can visualize it with Blender for instance. 
 
 <u>Notes</u>:
-If mapping you need to add the location of the B_gauss.pt file in the utils.py
+In case the fourier mapping is used ('mapping' == true) you need to add the location of the B_gauss.pt file in the [utils.py](/utils.py)
  ```python
  def get_sdfgrid(model, grid_res=20, mapping=True, device='cuda'): #Warning mapping actived
     B = torch.load("B_gauss/location.pt")
