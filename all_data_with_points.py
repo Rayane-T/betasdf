@@ -1,15 +1,14 @@
 import torch
 import numpy as np 
 
-number_of_mesh = 2 
-number_of_beta = 2 
+n = 2
 
 poin = np.empty((0, 3))
 sdfs = np.empty((0,))
 n = np.empty((0,3))
 surf = np.empty((0,))
 
-for i in range(9):
+for i in range(n):
     with open('./dataset/t_posemesh/t_posesampled_{}.npy'.format(i), 'rb') as f:
         points = np.load(f)
         sdf = np.load(f) 
@@ -26,7 +25,7 @@ poin = torch.from_numpy(poin)
 betas = torch.empty(0)
 
 # fit the beta 
-for j in range(9):
+for j in range(n):
     with open('./dataset/t_posemesh/t_pose_betas/beta_00{}.npy'.format(j), 'rb') as f:
         beta = np.load(f)[:10]
 
