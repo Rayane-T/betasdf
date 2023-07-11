@@ -1,7 +1,5 @@
 # Beta SDF 
 
-Beta SDF is a Multi Layer Perceptron (MLP) that inferences the Signed Distance Function Value of a points and betas to efficiently recreate SMPL mesh.
-
 ## Generating the Dataset :
 
 You first need to generate a SMPL mesh with SMPL.py algorithm, sample points around the body with points_generation.py algorithm, do that for how many beta you want in your dataset, then all_data_with_points.py, take n as an hyperparameter, will concatenate the points generated with their respective betas to generate the complete dataset. (Current [Dataset](https://drive.google.com/drive/folders/1ep9VJdz7qqR5bn6jES7NTwcYmExv57Js?usp=sharing))
